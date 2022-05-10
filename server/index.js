@@ -24,12 +24,34 @@ app.get('/getUsers', (req, res) => {
     });
 });
 
-app.post("/createUser", async (req, res) => {
+app.post('/createUser', async (req, res) => {
     const user = req.body;
     const newUser = new UserModel(user);
     await newUser.save();
 
     res.json(user);
+});
+
+app.put('/update', async (req, res) => {
+    const newAge = req.body.newAge;
+    const id = req.body.id;
+
+    try {
+        await UserModel.findById(id, (err, userToUpdate) => {
+            userToUpdate.age = Number(newAge);
+            userToUpdate.save();
+        });
+    } catch (error) {
+        console.log(error);
+    }
+
+    res.send('updated');
+});
+
+app.delete('/delete/:id', async (req, res) => {
+    const id = req.params.id;
+    await UserModel.findByIdAndRemove(id).exec();
+    res.send('Item Deleted');
 });
 
 app.listen(PORT, () => {
