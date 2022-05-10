@@ -33,12 +33,16 @@ app.post('/createUser', async (req, res) => {
 });
 
 app.put('/update', async (req, res) => {
+    const newName = req.body.newName;
     const newAge = req.body.newAge;
+    const newUsername = req.body.newUsername;
     const id = req.body.id;
 
     try {
         await UserModel.findById(id, (err, userToUpdate) => {
+            userToUpdate.name = String(newName);
             userToUpdate.age = Number(newAge);
+            userToUpdate.username = String(newUsername);
             userToUpdate.save();
         });
     } catch (error) {
