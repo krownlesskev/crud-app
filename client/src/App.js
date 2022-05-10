@@ -1,14 +1,14 @@
 import './app.styles.scss';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
-
+import Edit from './component/Edit';
 
 function App() {
   const [listOfUsers, setListOfUsers] = useState([{}]);
   const [name, setName] = useState('');
   const [age, setAge] = useState(0);
   const [username, setUsername] = useState('');
-  const [showComponent] = useState(false);
+  const [showComponent, setShowComponent] = useState(false);
 
   useEffect(() => {
     Axios.get(`http://localhost:3001/getUsers`)
@@ -25,14 +25,19 @@ function App() {
     });
   };
 
-  const updateUser = (id) => {
-    const newAge = prompt('enter new age:');
-    if (isNaN(newAge)) return
+  const updateUser = (id, editName, editAge, editUsername) => {
+    const newName = editName;
+    const newAge = editAge;
+    const newUsername = editUsername;
 
     Axios.put('http://localhost:3001/update', {
+      newName,
       newAge,
+      newUsername,
       id
-    });
+    }).then(
+      setShowComponent(prev => !prev)
+    );
   };
 
   const deleteUser = (id) => {
@@ -62,8 +67,11 @@ function App() {
               <p>Name: {user.name}</p>
               <p>Age: {user.age}</p>
               <p>Username: {user.username}</p>
-              <button onClick={() => { updateUser(user._id); }}>Edit</button>
-              {/* {showComponent ?} */}
+              <button onClick={() => { setShowComponent(prev => !prev); }}>Edit</button>
+              {showComponent ? <Edit
+                updateUser={updateUser}
+                {...user}
+              /> : null}
               <button onClick={() => { deleteUser(user._id); }}>Delete</button>
             </div>
           );
