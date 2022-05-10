@@ -28,6 +28,15 @@ function App() {
       });
   };
 
+  const updateUser = (id) => {
+    const newAge = prompt('enter new age:');
+
+    Axios.put('http://localhost:3001/update', {
+      newAge,
+      id
+    });
+  };
+
   return (
     <div className='app'>
       <div className='user-input'>
@@ -51,6 +60,8 @@ function App() {
               <p>Name: {user.name}</p>
               <p>Age: {user.age}</p>
               <p>Username: {user.username}</p>
+              <button onClick={() => { updateUser(user._id); }}>Edit</button>
+              <button>Delete</button>
             </div>
           );
         })}
