@@ -27,6 +27,7 @@ function App() {
 
   const updateUser = (id) => {
     const newAge = prompt('enter new age:');
+    if (isNaN(newAge)) return
 
     Axios.put('http://localhost:3001/update', {
       newAge,
