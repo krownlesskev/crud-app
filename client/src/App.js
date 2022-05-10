@@ -8,6 +8,7 @@ function App() {
   const [name, setName] = useState('');
   const [age, setAge] = useState(0);
   const [username, setUsername] = useState('');
+  const [showComponent] = useState(false);
 
 
   useEffect(() => {
@@ -22,10 +23,7 @@ function App() {
       name,
       age,
       username,
-    })
-      .then((response) => {
-        console.log('USER CREATED:', response.data);
-      });
+    });
   };
 
   const updateUser = (id) => {
@@ -35,6 +33,10 @@ function App() {
       newAge,
       id
     });
+  };
+
+  const deleteUser = (id) => {
+    Axios.delete(`http://localhost:3001/delete/${id}`);
   };
 
   return (
@@ -61,7 +63,8 @@ function App() {
               <p>Age: {user.age}</p>
               <p>Username: {user.username}</p>
               <button onClick={() => { updateUser(user._id); }}>Edit</button>
-              <button>Delete</button>
+              {/* {showComponent ?} */}
+              <button onClick={() => { deleteUser(user._id); }}>Delete</button>
             </div>
           );
         })}
