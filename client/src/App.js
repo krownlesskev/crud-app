@@ -10,9 +10,8 @@ function App() {
   const [username, setUsername] = useState('');
   const [showComponent] = useState(false);
 
-
   useEffect(() => {
-    Axios.get('http://localhost:3001/getUsers')
+    Axios.get(`http://localhost:3001/getUsers`)
       .then((res) => {
         setListOfUsers(res.data);
       });
