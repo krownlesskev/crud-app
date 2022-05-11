@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import UserCard from './component/userCard/UserCard';
 import { Button } from './component/button/Button.style';
-import { AppContainer } from './component/container/AppContainer.style';
+import { AppContainer } from './component/containers/AppContainer.style';
+import { Container } from './component/containers/Container.style';
 
 function App() {
   const [listOfUsers, setListOfUsers] = useState([{}]);
@@ -46,7 +47,7 @@ function App() {
 
   return (
     <AppContainer>
-      <div>
+      <Container>
         <div>
           <input type="text" placeholder='Name...' onChange={(event) => {
             setName(event.target.value);
@@ -59,23 +60,23 @@ function App() {
           }} />
         </div>
         <Button
-          backgroundColor='rgba(99, 149, 255, 1)'
-          textColor='white'
+          backgroundColor='#FFA500'
+          textColor='#232f34'
           onClick={createUser}>Create User</Button>
-      </div>
-      <div>
-        {listOfUsers.map((user, index) => {
-          return (
-            <UserCard
-              key={index}
-              user={user}
-              index={index}
-              deleteUser={deleteUser}
-              updateUser={updateUser}
-            />
-          );
-        })}
-      </div>
+        <div>
+          {listOfUsers.map((user, index) => {
+            return (
+              <UserCard
+                key={index}
+                user={user}
+                index={index}
+                deleteUser={deleteUser}
+                updateUser={updateUser}
+              />
+            );
+          })}
+        </div>
+      </Container>
     </AppContainer>
   );
 }

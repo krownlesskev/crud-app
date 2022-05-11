@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from '../button/Button.style';
 
 const Edit = ({ updateUser, setShowComponent, ...user }) => {
     const [name, setName] = useState('');
@@ -16,10 +17,10 @@ const Edit = ({ updateUser, setShowComponent, ...user }) => {
             <input type="text" placeholder='Username...' onChange={(event) => {
                 setUsername(event.target.value);
             }} />
-            <button onClick={() => {
+            <Button onClick={() => {
                 updateUser(user._id, name, age, username);
                 setShowComponent(prev => !prev);
-            }}>Apply Changes</button>
+            }}>Apply Changes</Button>
         </div >
     );
 };
