@@ -12,14 +12,14 @@ function App() {
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    Axios.get(`http://localhost:3001/getUsers`)
+    Axios.get(`https://krwnless-crud-app.herokuapp.com/getUsers`)
       .then((res) => {
         setListOfUsers(res.data);
       });
   }, [listOfUsers]);
 
   const createUser = () => {
-    Axios.post('http://localhost:3001/createUser', {
+    Axios.post('https://krwnless-crud-app.herokuapp.com/createUser', {
       name,
       age,
       username,
@@ -33,7 +33,7 @@ function App() {
 
     if (newName.length === 0 || newAge === null || newUsername.length === 0) return;
 
-    Axios.put('http://localhost:3001/update', {
+    Axios.put('https://krwnless-crud-app.herokuapp.com/update', {
       newName,
       newAge,
       newUsername,
@@ -42,7 +42,7 @@ function App() {
   };
 
   const deleteUser = (id) => {
-    Axios.delete(`http://localhost:3001/delete/${id}`);
+    Axios.delete(`https://krwnless-crud-app.herokuapp.com/delete/${id}`);
   };
 
   return (
