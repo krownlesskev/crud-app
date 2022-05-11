@@ -10,9 +10,8 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 3001;
+mongoose.connect(process.env.MONGODB_URI);
 
-mongoose.connect(process.env.API_KEY);
 
 app.get('/getUsers', (req, res) => {
     UserModel.find({}, (err, result) => {
@@ -58,6 +57,6 @@ app.delete('/delete/:id', async (req, res) => {
     res.send('Item Deleted');
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on : ${PORT}`);
+app.listen(process.env.PORT || 3001, () => {
+    console.log(`Server running`);
 });
