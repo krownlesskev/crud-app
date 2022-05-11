@@ -8,4 +8,8 @@ export const Container = styled.div`
     align-items: center;
     background-color: #344955;
     box-shadow: 0 5px 10px #111111;
+    div input {
+        color: black;
+        text-align: center;
+    }
 `;
