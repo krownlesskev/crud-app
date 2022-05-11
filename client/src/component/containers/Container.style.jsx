@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+    max-height: 750px;
+    overflow-y: scroll;
     margin: 5rem 0;
     padding: 1rem;
     display: flex;
@@ -11,5 +13,9 @@ export const Container = styled.div`
     div input {
         color: black;
         text-align: center;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
     }
 `;
