@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import UserCard from './component/userCard/UserCard';
+import { Button } from './component/button/Button.style';
+import { AppContainer } from './component/container/AppContainer.style';
 
 function App() {
   const [listOfUsers, setListOfUsers] = useState([{}]);
@@ -35,7 +37,7 @@ function App() {
       newAge,
       newUsername,
       id
-    })
+    });
   };
 
   const deleteUser = (id) => {
@@ -43,8 +45,8 @@ function App() {
   };
 
   return (
-    <div className='app'>
-      <div className='user-input'>
+    <AppContainer>
+      <div>
         <div>
           <input type="text" placeholder='Name...' onChange={(event) => {
             setName(event.target.value);
@@ -56,9 +58,12 @@ function App() {
             setUsername(event.target.value);
           }} />
         </div>
-        <button onClick={createUser}>Create User</button>
+        <Button
+          backgroundColor='rgba(99, 149, 255, 1)'
+          textColor='white'
+          onClick={createUser}>Create User</Button>
       </div>
-      <div className="user-display">
+      <div>
         {listOfUsers.map((user, index) => {
           return (
             <UserCard
@@ -71,7 +76,7 @@ function App() {
           );
         })}
       </div>
-    </div>
+    </AppContainer>
   );
 }
 
