@@ -1,8 +1,11 @@
 # CRUD APP
 
-I started this project to learn more about the MERN Stack.
+`Live Demo:`
+https://krownlesskev.github.io/crud-app/
 
-The front end is developed with `React`and `styled-components`.
+I started this project to learn more about the `MERN` Stack.
+
+The Front end is developed with `React`and `styled-components`.
 
 The backend has custom API endpoints written in `Node.js`.
 These API endpoints are for `CRUD` operation (Create, Read, Update, Delete)
@@ -14,9 +17,11 @@ that defines the user data which looks like :
 `Name(STRING), Age(NUMBER, and Username(STRING)`
 
 Back end will be hosted on `heroku` to maintain api functionality.
-Front end will be hosted on `gh-pages`.
+The Front end will be hosted on `gh-pages`.
 
-## Technical Challenge
+## Technical Challenges
+
+### Front End:
 
 Every user that was created on the frontend would render with edit and delete buttons.
 
@@ -30,3 +35,18 @@ render the edit component.
 `Fix:` We resolved this issue by instead moving the code for our UserCard's into their own component,
 so that they would each indivdually manage their own state for toggling the edit component.
 The problem existed because they originally shared state across all the UserCards.
+
+### Back End:
+
+Server was being deployed to heroku.
+
+`Expected outcome:` After deploying to heroku, out front end would be able to make api calls to the server.
+
+`Issue:` Heroku app was crashing immediately.
+
+`Fix:` I had only set enviromental variables during development (locally) to protect my mongoDB URI. I had to manually set new enviroment variables on heroku's CLI and use those instead.
+
+`Sub-issue to this fix:` While setting the URI in the .env on heroku, I had initially set it with `" "`, this
+caused a parsing error during deployment.
+
+`Fix:` I simply had to remove the `" "` in my enviromental variable on heroku to get the URI to work.
