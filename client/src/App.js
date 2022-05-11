@@ -1,4 +1,3 @@
-import './app.styles.scss';
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import UserCard from './component/userCard/UserCard';

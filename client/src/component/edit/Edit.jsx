@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './edit.styles.scss';
 
 const Edit = ({ updateUser, setShowComponent, ...user }) => {
     const [name, setName] = useState('');

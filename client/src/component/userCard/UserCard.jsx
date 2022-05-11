@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './usercard.styles.scss';
 import Edit from '../edit/Edit';
 
 const UserCard = ({ user, index, deleteUser, updateUser }) => {
