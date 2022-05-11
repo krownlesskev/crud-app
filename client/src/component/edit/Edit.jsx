@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './edit.styles.scss';
 
-const Edit = ({ updateUser, ...user }) => {
+const Edit = ({ updateUser, setShowComponent, ...user }) => {
     const [name, setName] = useState('');
     const [age, setAge] = useState(0);
     const [username, setUsername] = useState('');
@@ -17,7 +17,10 @@ const Edit = ({ updateUser, ...user }) => {
             <input type="text" placeholder='Username...' onChange={(event) => {
                 setUsername(event.target.value);
             }} />
-            <button onClick={() => { updateUser(user._id, name, age, username); }}>Update User</button>
+            <button onClick={() => {
+                updateUser(user._id, name, age, username);
+                setShowComponent(prev => !prev);
+            }}>Apply Changes</button>
         </div >
     );
 };
