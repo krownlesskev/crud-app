@@ -24,7 +24,7 @@ Every user that was created on the frontend would render with edit and delete bu
 the information of the selected user.
 
 `The Issue:` The edit button would conditionally render an edit component based on whether the edit button was clicked or not. `useState to toggle the condition`
-However, if any one of these user card components had their edit button clicked `ALL` user cards would
+However, if any one of these user cards had their edit button clicked `ALL` user cards would
 render the edit component.
 
 `Fix:` We resolved this issue by instead moving the code for our UserCard's into their own component,
