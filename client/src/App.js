@@ -16,7 +16,7 @@ function App() {
       .then((res) => {
         setListOfUsers(res.data);
       });
-  }, [listOfUsers]);
+  }, []);
 
   const createUser = () => {
     Axios.post('https://krwnless-crud-app.herokuapp.com/createUser', {
